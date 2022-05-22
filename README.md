@@ -26,6 +26,7 @@ tar -xvf ./zeroth_korean.tar.gz -C ./zeroth/
     ```
     pip install pandas 
     pip install tqdm
+    pip install soundfile
     ```
     or
     ```
@@ -33,11 +34,35 @@ tar -xvf ./zeroth_korean.tar.gz -C ./zeroth/
     ``` 
 
 4. 데이터 전처리  
+- run.sh에서 경로 설정 필요
 ```
 bash run.sh
 ```
 
-##  Zeoroth 데이터 셋 구조
+## 결과 
+- (wav file 생성)
+    ```
+    zeroth
+    ├── test_data_01
+    ├── train_data_01
+    └── wav
+        ├── test_data_01
+        └── train_data_01
+    ```
+- labels_for_chars.csv
+    ```
+    id,char,freq
+    3, ,306930
+    4,이,35483
+    ```
+- train_transcripts.csv (wav로 변환)
+    ```
+    file_name,text
+    /wav/train_data_01/003/190/190_003_0002.wav,이 사고로 크게 다친 서씨가 인근 병원으로 옮겨졌으나 의식이 없는 상태다
+    /wav/train_data_01/003/190/190_003_0023.wav,힐리스의 매력은 신발 밑창에 바퀴가 달려 있어 인라인스케이트처럼 미끄러지듯 달릴 수 있다는 점이다
+    ```  
+
+##  기존 Zeoroth 데이터 셋 구조 
 zeroth의 훈련 및 시험 데이터는 아래와 같은 경로로 저장되어 있다.  
 음원은 flac 확장자를 사용하며, 각 음원에 대한 스크립트는 폴더에 하나씩 있는 .trans.txt에 한번에 저장되어 있다.
 ```
@@ -70,7 +95,7 @@ zeroth
 ```
 
 ## 코드 동작 원리
-- 폴더 별로 있는 스크립트 파일을 train/test로만 나누어 통합한다. (csv/txt)
-- 전처리가 된 깨끗한 스크립트이므로, 다른 전처리는 하지 않는다.
-- 빈도 순으로 토큰 생성한다. (csv/txt)
-
+1. 폴더 별로 있는 스크립트 파일을 train/test로만 나누어 통합한다. (csv/txt)
+2. 전처리가 된 깨끗한 스크립트이므로, 다른 전처리는 하지 않는다.
+3. 빈도 순으로 토큰 생성한다. (csv/txt)
+4. flac file을 wav file로 바꾼다.
