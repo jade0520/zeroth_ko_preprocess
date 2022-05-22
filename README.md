@@ -6,33 +6,33 @@ sooftware님의 [ksponspeech](https://github.com/sooftware/ksponspeech)를 참�
 감사합니다.
 
 ## 데이터 셋 준비
-1. openslr 에서 데이터 셋 가져오기 (https://www.openslr.org/40/)
+
+1. openslr 에서 데이터 셋 가져오기 (https://www.openslr.org/40/)  
 ```
-wget https://www.openslr.org/resources/40/zeroth_korean.tar.gz
+wget https://www.openslr.org/resources/40/zeroth_korean.tar.gz  
 ```
 2. 압푹 풀기 
 ```
 mkdir ./zeroth/ # 폴더 생성
 tar -xvf ./zeroth_korean.tar.gz -C ./zeroth/
-```
-
-3.setting 
-3-1. 코드 준비
-```
-git clone
-cd ./zeroth_ko_preprocess
-```
-3-2. 환경 준비
-```
-pip install pandas 
-pip install tqdm
-```
-or
-```
-pip install -r requirements.txt
 ``` 
+3. setting   
+    3-1. 코드 준비  
+    ```
+    git clone
+    cd ./zeroth_ko_preprocess
+    ```
+    3-2. 환경 준비 
+    ```
+    pip install pandas 
+    pip install tqdm
+    ```
+    or
+    ```
+    pip install -r requirements.txt
+    ``` 
 
-4.데이터 전처리
+4. 데이터 전처리  
 ```
 bash run.sh
 ```
@@ -63,8 +63,8 @@ zeroth
 └── ...
 
 ```
-
-``` .trans.txt 구조
+### .trans.txt 구조
+``` 
 218_003_0005 앞으로 계속 북진하면서 정오 무렵엔 동해상으로 올라와 오후 두 시를 전후해선 부산 남동쪽 백 쉰 킬로미터 부근 해상까지 북상하겠습니다
 218_003_0015 한술 더 떠 여당 의원들은 국회 예결특위에서 강신명 경찰청장을 압박 신변보호 조치를 하겠다는 답변까지 얻어냈습니다
 ```
